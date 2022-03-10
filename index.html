@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <main class="main">
+        <section class="reserva-titulo">
+            <h2>Reserva</h2>
+        </section>
+        <section class="section-principal">
+
+            <div class="habitacion-item">
+                <div class="selection-input">
+                    <h3>Seleccione el tipo de habitación</h3>
+                    <select name="" id="selectionRoom" class="selectPeople">
+                        <option value="" selected disabled hidden>Seleccione</option>
+                        <option value="1">Standard</option>
+                        <option value="2">Suite Junior</option>
+                        <option value="3">Suite</option>
+                    </select>
+                </div>
+                <div class="item-entry h-m">
+                    <h3 id="titleroom"></h3>
+                    <span class="item-description" id="room-description"></span>
+                </div>
+                <img src="" class="responsive" srcset="" id="img">
+                <div class="noche h-m">
+                    <h3>¿Cuántas personas?</h3>
+                    <select name="" id="selectPeople" class="selectPeople">
+                        <option value="" selected disabled hidden>Seleccione</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="noche h-m">
+                    <h3>¿Cuántas noches?</h3>
+                    <input type="number" name="quantity-nigths" id="quantity-nigths">
+                </div>
+                <div class="h-m spa">
+                    <h3>¿SPA?</h3>
+                    <select name="" id="spa" class="check-spa">
+                        <option value="" selected disabled hidden>Seleccione</option>
+                        <option value="1">Sí</option>
+                        <option value="2">No</option>
+                    </select>
+                </div>
+                <div class="noche h-m">
+                    <h3>¿Noches de parking?</h3>
+                    <input type="number" name="parking" id="parking">
+                </div>
+                <div class="value h-m">
+                    <h3>€/noche</h3>
+                    <span id="precio-noche-total">0<span>&#8364</span></span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
