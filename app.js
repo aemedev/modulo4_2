@@ -1,4 +1,15 @@
+let totalPriceFunction = ()=> {
+    let initialPrice = selectionRoom();
+    let priceWithRoomAndPeople = howManyPeople(initialPrice);
+    let priceWithRoomPeopleNigths = howManyNigths(priceWithRoomAndPeople);
+    let priceRoomPeopleNigthsSpa = selectSpa(priceWithRoomPeopleNigths);
+    let priceRoomPeopleNigthsSpaParking = parkingNigths(priceRoomPeopleNigthsSpa);
 
+    return priceRoomPeopleNigthsSpaParking;
+};
+
+
+//////////////////////////////////////// Which Room?
 let selectionRoom = () => {
     let totalNigthPrice = document.querySelector('#precio-noche-total');
     let descriptionRoom = document.querySelector('#room-description');
@@ -36,16 +47,16 @@ let selectionRoom = () => {
 
 };
 let selectRoom = document.querySelector('#selectionRoom');
-selectRoom.addEventListener('change', selectionRoom);
+selectRoom.addEventListener('change', totalPriceFunction);
 
 
 //////////////////////////////////////// HOW MANY PEOPLE?
 
-let howManyPeople = () => {
+let howManyPeople = (a) => {
     let totalNigthPrice = document.querySelector('#precio-noche-total');
     let selectPeople = document.querySelector('#selectPeople');
     let value = selectPeople.options[selectPeople.selectedIndex].value;
-    let partialPrice = selectionRoom();
+    let partialPrice = a;
     let perCent = 100 * 0.25;
     let valueToReturn;
     
@@ -63,14 +74,14 @@ let howManyPeople = () => {
 };
 
 let selectPeople = document.querySelector('#selectPeople');
-selectPeople.addEventListener('change', howManyPeople);
+selectPeople.addEventListener('change', totalPriceFunction);
 
 
 ///////////////////////////////////////////////////CANTIDAD
 
-let howManyNigths = ()=> {
+let howManyNigths = (a)=> {
     let quantityNigths = document.querySelector('#quantity-nigths').value;
-    let partialPrice = howManyPeople();
+    let partialPrice = a;
     let totalNigthPrice = document.querySelector('#precio-noche-total');
     let valueToReturn;
     if (quantityNigths > 0) {
@@ -84,14 +95,14 @@ let howManyNigths = ()=> {
     return valueToReturn;
 };
 let quantityNigths = document.querySelector('#quantity-nigths');
-quantityNigths.addEventListener('keyup', howManyNigths);
+quantityNigths.addEventListener('keyup', totalPriceFunction);
 
 /////////////////////////////////////////SPA
 
-let selectSpa = ()=> {
+let selectSpa = (a)=> {
     let spa = document.querySelector('#spa');
     let value = spa.options[spa.selectedIndex].value;
-    let partialPrice = howManyNigths();
+    let partialPrice = a;
     let valueToReturn;
     let totalNigthPrice = document.querySelector('#precio-noche-total');
     if(value == 1){
@@ -105,14 +116,14 @@ let selectSpa = ()=> {
     
 };
 let spa = document.querySelector('#spa');
-spa.addEventListener('change', selectSpa)
+spa.addEventListener('change', totalPriceFunction)
 
 ///////////////////////////////////////////////////NOOCHES PARKING
 
-let parkingNigths = ()=>{
+let parkingNigths = (a)=>{
     let parkingInput = document.querySelector('#parking').value;
     let totalNigthPrice = document.querySelector('#precio-noche-total');
-    let partialPrice = selectSpa();
+    let partialPrice = a;
     let valueToReturn;
 
     if (parkingInput > 0) {
@@ -126,6 +137,6 @@ let parkingNigths = ()=>{
     return valueToReturn;
 };
 let parkingInput = document.querySelector('#parking')
-parkingInput.addEventListener('keyup', parkingNigths);
+parkingInput.addEventListener('keyup', totalPriceFunction);
 
-
+totalPriceFunction();
